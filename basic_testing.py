@@ -1,3 +1,6 @@
 import request_sender
 
-request_sender.request_translation("thpt is absolmtely wrong")
+print(request_sender.buffer_translate({
+        "text": "thpt is absolmtely wrong",
+        "index": 0,
+    }))
