@@ -33,3 +33,19 @@ def buffer_translate(input):
     }
 
 #Input as dict
+def buffer_truncate_translate(input): 
+    json_content = {
+        'text': input['text'],
+        'index': input['index'],
+        'truncate': True,
+    }
+
+    print(f"Translating: {input['text']}")
+    response = requests.get("http://127.0.0.1:5000/parse_text", json=json.dumps(json_content))
+    print(f"Response: {response.json()['text']}")
+
+    return {
+        "result": response.json()['text'],
+        "index": 0,
+        "new_text": input['text'][response.json()['index']:]
+    }
